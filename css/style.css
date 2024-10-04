@@ -14,7 +14,6 @@
 :root {
   --bg-color: #081b29;
   --second-bg-color: #112e42;
-  --second-bg-color: #112e42;
   --text-color: #ededed;
   --main-color: #00abf0;
 }
@@ -25,6 +24,7 @@ html {
 }
 
 body {
+  transition: background-color 1s, color 1s;
   background: var(--bg-color);
   color: var(--text-color);
 }
@@ -88,7 +88,7 @@ section {
   display: flex;
   align-items: center;
   padding: 0 9%;
-  background: url("../images/home.jpg") no-repeat;
+  /* background: url("../images/home.jpg") no-repeat; */
   background-size: cover;
   background-position: center;
 }
@@ -124,6 +124,9 @@ section {
   background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-position: 33rem 0;
+}
+
+.home.show-animate .home-content .text-animate h3 {
   animation: homeBgText 6s linear infinite;
   animation-delay: 2s;
 }
@@ -137,6 +140,9 @@ section {
   height: 100%;
   border-right: 2px solid var(--main-color);
   z-index: -1;
+}
+
+.home.show-animate .home-content .text-animate h3::before {
   animation: homeCursorText 6s linear infinite;
   animation-delay: 2s;
 }
@@ -273,7 +279,7 @@ section {
   align-items: center;
   flex-direction: column;
   gap: 2rem;
-  background-color: var(--secout-bg-color);
+  background-color: var(--second-bg-color);
   padding-bottom: 6rem;
 }
 
@@ -643,10 +649,10 @@ span {
   background: var(--second-bg-color);
 }
 
-/* .footer-text,
+.footer-text,
 .footer-iconTop {
   position: relative;
-} */
+}
 
 .footer-text p {
   font-size: 1.6rem;
@@ -720,7 +726,12 @@ span {
   animation: none;
 }
 
-.education .education-box .animate-scroll {
+section:nth-child(odd) .animate.scroll,
+.footer .animate.scroll {
+  background: var(--second-bg-color);
+}
+
+.education .education-box .animate.scroll {
   width: 105%;
 }
 
@@ -757,6 +768,12 @@ span {
 
   .footer {
     padding: 2rem 4%;
+  }
+}
+
+@media (max-width: 850px) {
+  .animate.home-img {
+    width: 55%;
   }
 }
 
@@ -930,4 +947,128 @@ span {
   100% {
     width: 0;
   }
+}
+
+/* ::-webikt-scrollbar {
+  width: 15px;
+}
+
+::-webikt-scrollbar-track {
+  background: #d1e5ff;
+}
+
+::-webikt-scrollbar-thumb {
+  background-color: linear-gradient(#d1e5ff, #11eaff);
+  border-radius: 10px;
+  transition: background-color 0.3s;
+} */
+
+/* Add the following styles to customize the scrollbar */
+
+::-webkit-scrollbar {
+  width: 15px; /* Adjust the width of the scrollbar */
+
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  background: var(--bg-color); /* Change the background color of the scrollbar track and thumb */
+}
+
+/* ::-webkit-scrollbar-thumb {
+  background-color: linear-gradient(#ffffff, #11eaff); Change the background color of the scrollbar thumb
+  border-radius: 10px; Adjust the border radius of the scrollbar thumb
+} */
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--main-color) ; /* Change the background color of the scrollbar thumb when hovered */
+}
+
+.theme::-webkit-scrollbar-thumb {
+  background-color: var(--second-bg-color); /* Replace #your-preferred-color with your desired color */
+}
+
+.theme {
+  position: fixed;
+  width: 70px;
+  height: 300px;
+  top: 25%;
+  right: -65px;
+  border-left: 8px solid var(--main-color);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  background: #f4f4f4;
+  border-radius: 20px 0 0 20px;
+  box-shadow: 0 0 20px var(--bg-color);
+  transition: 1s;
+  overflow-y: scroll;
+  padidng-top: 1rem;
+  padding-bottom: 1rem;
+  z-index: 100;
+}
+
+.theme:hover {
+  right: 0;
+  border-radius: 3px;
+}
+
+.themeContainer {
+  width: 70%;
+  margin-top: 15rem;
+}
+
+.themeIcon {
+  display: inline-flex;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #d2d2d2;
+  cursor: pointer;
+  transition: .3s;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+.themeIcon:hover {
+  transform: scale(1.2);
+}
+
+.defult {
+  background: linear-gradient(to right, #00abf0, #112e42);
+}
+
+.darkMode {
+  background: linear-gradient(to right, #121212, #212121);
+}
+
+.greenAndWhite {
+  background: linear-gradient(to right, rgba(0, 128, 0, 0.8), rgba(0, 64, 0, 0.6));
+}
+
+.redAndWhite {
+  background: linear-gradient(to right, rgba(255, 0, 0, 0.8), rgba(64, 0, 0, 0.6));
+}
+
+.purpleAndWhite {
+  background: linear-gradient(to right, rgba(128, 0, 128, 0.8), rgba(64, 0, 64, 0.6));
+}
+
+.orangeAndWhite {
+  background: linear-gradient(to right, rgba(255, 165, 0, 0.8), rgba(128, 64, 0, 0.6));
+}
+
+.pinkAndWhite {
+  background: linear-gradient(to right, rgba(255, 192, 203, 0.8), rgba(128, 64, 64, 0.6));
+}
+
+.brownAndWhite {
+  background: linear-gradient(to right, rgba(165, 42, 42, 0.8), rgba(128, 64, 64, 0.6));
+}
+
+.grayAndWhite {
+  background: linear-gradient(to right, rgba(128, 128, 128, 0.8), rgba(64, 64, 64, 0.6));
 }
